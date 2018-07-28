@@ -1,0 +1,122 @@
+{
+    type: "object",
+    required:['string',"boolean"],
+    properties: {
+        string: {
+            type: "string",
+            title: "字符串",
+            maxLength: 5,
+            default: "333",
+            "form": {
+                disableSuccessState: true,
+                placeholder: "string哦",
+                validationMessage: {
+                    maxLength:
+                        '{{title}}"{{value}}"太长了,最长{{schema.maxLength}}个字',
+                    minLength: "太短了"
+                },
+                condition: "model.number>2"
+            
+            }
+        },
+        number: {
+            type: "number",
+            title: "测试number",
+            maximum: 3
+        },
+        array: {
+            type: "array",
+            title: "array1",
+            items: {
+                title: "item",
+                type: "string",
+                default: "b",
+                "form": {
+                    htmlClass: "items"
+                }
+            }
+        },
+        array2: {
+            type: "array",
+            title: "array1",
+            "form": {
+                startEmpty: false
+            },
+            items: {
+                type: "object",
+                properties: {
+                    a: {
+                        title: "itema",
+                        type: "string",
+                        default: "1"
+                    },
+                    b: {
+                        title: "itemb",
+                        type: "string"
+                    }
+                }
+            }
+        },
+        readOnly: {
+            type: "string",
+            title: "字符串",
+            description: "readonly",
+            readOnly:true,            
+        },
+        boolean: {
+            type: "boolean",
+            title: "测试boolean",
+            "form": {
+                destroyStrategy: "empty",
+                condition: "model.number>2"
+            }
+        },
+        
+        enum: {
+            type: "string",
+            title: "测试enum",
+            "form": {
+                titleMap: [
+                    { value: "Andersson", name: "Andersson" },
+                    { value: "Johansson", name: "Johansson" },
+                    { value: "1112223334445", name: "The right one" }
+                ],
+                placeholder: "enum哦"
+            }
+        },
+        time: {
+            type: "number",
+            title: "测试时间戳",
+            format: "timestamp"
+        },
+        money: {
+            type: "number",
+            title: "测试money"
+        },
+        obj: {
+            type: "object",
+            title: "obj",
+            format:'section',
+            form:{
+                sections:[{
+                    keys:["a","c"],
+                    title:"a and c",
+                },{
+                    keys:["b"],
+                    title:"is b"
+                }]
+            },         
+            properties: {
+                a: {
+                    type: "string"
+                },
+                b: {
+                    type: "number"
+                },
+                c: {
+                    type: "string"
+                }
+            }
+        }
+    }
+}

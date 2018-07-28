@@ -1,0 +1,11 @@
+build
+dist/static
+dist/index.html
+config
+src/examples
+static
+webpack-stats.json
+*.html
+./*.js
+.editorconfig
+.vscode
